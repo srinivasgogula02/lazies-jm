@@ -1,9 +1,54 @@
+"use client"
+
+import type React from "react"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { BookOpen, Target, Zap, Coffee, Star, Heart, Sparkles } from "lucide-react"
+import { BookOpen, Target, Zap, Star, Heart, Sparkles } from "lucide-react"
+import { createClient } from "@/lib/supabase/client"
+import { useState } from "react"
 
 export default function HomePage() {
+  const [email, setEmail] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
+  const [message, setMessage] = useState("")
+  const [isSuccess, setIsSuccess] = useState(false)
+
+  const handleWaitlistSignup = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!email) return
+
+    setIsLoading(true)
+    setMessage("")
+
+    const supabase = createClient()
+
+    try {
+      const { error } = await supabase.from("waitlist").insert([{ email }])
+
+      if (error) {
+        if (error.code === "23505") {
+          // Unique constraint violation
+          setMessage("You're already on the list! 🎉")
+          setIsSuccess(true)
+        } else {
+          throw error
+        }
+      } else {
+        setMessage("Welcome to the vibe! We'll hit you up when we launch 🚀")
+        setIsSuccess(true)
+        setEmail("")
+      }
+    } catch (error) {
+      console.error("Waitlist signup error:", error)
+      setMessage("Oops, something went wrong. Try again? 😅")
+      setIsSuccess(false)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       <header className="relative border-b-4 border-primary bg-background">
@@ -11,16 +56,12 @@ export default function HomePage() {
         <div className="absolute top-0 right-0 w-24 h-24 bg-primary/10 organic-shape -z-10"></div>
         <div className="container mx-auto px-4 py-6 flex items-center justify-between relative z-10">
           <div className="flex items-center space-x-3">
-            <div className="relative">
-              <Coffee className="h-8 w-8 text-primary wiggle" />
-              <div className="absolute -top-1 -right-1 w-3 h-3 bg-accent rounded-full animate-pulse"></div>
-            </div>
             <span className="text-2xl font-bold text-foreground brand-handwritten">Lazies</span>
-            <div className="hidden sm:block text-xs bg-primary/10 text-primary px-2 py-1 rounded-full rotate-12">
-              lazies.xyz
-            </div>
           </div>
-          <Button className="hand-drawn bg-accent hover:bg-accent/90 text-accent-foreground font-bold hover:scale-105 transition-transform">
+          <Button
+            onClick={() => document.getElementById("waitlist-form")?.scrollIntoView({ behavior: "smooth" })}
+            className="hand-drawn bg-accent hover:bg-accent/90 text-accent-foreground font-bold hover:scale-105 transition-transform"
+          >
             Join the Vibe ✨
           </Button>
         </div>
@@ -56,6 +97,7 @@ export default function HomePage() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
             <Button
+              onClick={() => document.getElementById("waitlist-form")?.scrollIntoView({ behavior: "smooth" })}
               size="lg"
               className="hand-drawn bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-4 font-bold hover:scale-105 transition-transform"
             >
@@ -95,7 +137,6 @@ export default function HomePage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* Before */}
             <Card className="hand-drawn border-4 border-destructive/30 bg-destructive/5 transform -rotate-1 hover:rotate-0 transition-transform">
               <CardContent className="p-8 text-center">
                 <div className="text-6xl mb-4">😵‍💫</div>
@@ -121,7 +162,6 @@ export default function HomePage() {
               </CardContent>
             </Card>
 
-            {/* After */}
             <Card className="hand-drawn border-4 border-primary/30 bg-primary/5 transform rotate-1 hover:rotate-0 transition-transform">
               <CardContent className="p-8 text-center">
                 <div className="text-6xl mb-4">🧠✨</div>
@@ -161,7 +201,6 @@ export default function HomePage() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {/* Step 1 */}
           <Card className="hand-drawn border-3 border-primary/30 bg-card hover:scale-105 transition-transform transform rotate-1 hover:rotate-0">
             <CardContent className="p-8 text-center">
               <div className="bg-primary/10 w-20 h-20 organic-shape flex items-center justify-center mx-auto mb-6 bounce-subtle">
@@ -177,7 +216,6 @@ export default function HomePage() {
             </CardContent>
           </Card>
 
-          {/* Step 2 */}
           <Card className="hand-drawn border-3 border-accent/30 bg-card hover:scale-105 transition-transform transform -rotate-1 hover:rotate-0">
             <CardContent className="p-8 text-center">
               <div className="bg-accent/10 w-20 h-20 organic-shape flex items-center justify-center mx-auto mb-6 wiggle">
@@ -193,7 +231,6 @@ export default function HomePage() {
             </CardContent>
           </Card>
 
-          {/* Step 3 */}
           <Card className="hand-drawn border-3 border-primary/30 bg-card hover:scale-105 transition-transform transform rotate-1 hover:rotate-0">
             <CardContent className="p-8 text-center">
               <div className="bg-primary/10 w-20 h-20 organic-shape flex items-center justify-center mx-auto mb-6 float">
@@ -226,17 +263,29 @@ export default function HomePage() {
               <span className="text-sm opacity-80">(No spam, we promise - we're not that type of company 💯)</span>
             </p>
 
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 max-w-md mx-auto hand-drawn border-4 border-white/20">
-              <div className="flex flex-col gap-4">
+            <div
+              id="waitlist-form"
+              className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 max-w-md mx-auto hand-drawn border-4 border-white/20"
+            >
+              <form onSubmit={handleWaitlistSignup} className="flex flex-col gap-4">
                 <Input
                   type="email"
                   placeholder="your.email@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="bg-white border-0 text-foreground text-lg py-3 rounded-xl"
+                  required
+                  disabled={isLoading}
                 />
-                <Button className="bg-white text-primary hover:bg-white/90 font-bold text-lg py-3 rounded-xl hover:scale-105 transition-transform">
-                  Get Early Access ✨
+                <Button
+                  type="submit"
+                  disabled={isLoading}
+                  className="bg-white text-primary hover:bg-white/90 font-bold text-lg py-3 rounded-xl hover:scale-105 transition-transform"
+                >
+                  {isLoading ? "Joining..." : "Get Early Access ✨"}
                 </Button>
-              </div>
+              </form>
+              {message && <p className={`text-sm mt-4 ${isSuccess ? "text-white" : "text-red-200"}`}>{message}</p>}
               <p className="text-white/70 text-xs mt-4">
                 We'll send you a magic link when we launch (probably next month)
               </p>
@@ -250,11 +299,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center text-center">
             <div className="flex items-center space-x-3 mb-6">
-              <Coffee className="h-8 w-8 text-primary wiggle" />
               <span className="text-2xl font-bold text-foreground brand-handwritten">Lazies</span>
-              <div className="text-xs bg-accent text-accent-foreground px-2 py-1 rounded-full rotate-12">
-                lazies.xyz
-              </div>
             </div>
             <p className="text-muted-foreground mb-6 max-w-md text-lg">
               Making learning cool again, one curated video at a time 📚✨
