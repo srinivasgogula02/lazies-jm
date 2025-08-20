@@ -38,7 +38,7 @@
   --sidebar-accent-foreground: #ffffff;
   --sidebar-border: #e5e7eb;
   --sidebar-ring: rgba(139, 92, 246, 0.5);
-  --font-kalam: "Kalam", cursive; /* Added handwritten font variable */
+  --font-handwritten: "Your Handwritten Font", cursive; /* Placeholder for handwritten font */
 }
 
 .dark {
@@ -74,6 +74,7 @@
   --sidebar-accent-foreground: #ffffff;
   --sidebar-border: #334155;
   --sidebar-ring: rgba(139, 92, 246, 0.5);
+  --font-handwritten: "Your Handwritten Font", cursive; /* Placeholder for handwritten font */
 }
 
 @theme inline {
@@ -180,24 +181,11 @@
   border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
 }
 
-/* Added handwritten text styling classes */
-.handwritten {
-  font-family: var(--font-kalam);
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  transform: rotate(-0.5deg);
-}
-
-.handwritten-title {
+/* Updated handwritten brand styling to use Kalam font */
+.brand-handwritten {
   font-family: var(--font-kalam);
   font-weight: 700;
-  letter-spacing: 0.01em;
-  transform: rotate(-0.8deg);
-}
-
-.handwritten-bold {
-  font-family: var(--font-kalam);
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  transform: rotate(0.5deg);
+  transform: rotate(-2deg);
+  letter-spacing: 0.05em;
+  text-shadow: 2px 2px 0px rgba(139, 92, 246, 0.1);
 }

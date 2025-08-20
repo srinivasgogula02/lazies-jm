@@ -23,8 +23,8 @@ const kalam = Kalam({
 })
 
 export const metadata: Metadata = {
-  title: "Lazies - Stop Scrolling, Start Learning",
-  description: "Escape YouTube's scroll trap with AI-curated educational content that actually matters",
+  title: "Lazies - Escape the YouTube Scroll Trap",
+  description: "Stop doom-scrolling YouTube. Get curated educational content that actually matters. Join lazies.xyz",
   generator: "v0.app",
 }
 

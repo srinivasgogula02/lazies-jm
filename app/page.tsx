@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { BookOpen, Target, Zap, Brain, Star, Heart, Sparkles } from "lucide-react"
+import { BookOpen, Target, Zap, Coffee, Star, Heart, Sparkles } from "lucide-react"
 
 export default function HomePage() {
   return (
@@ -12,15 +12,15 @@ export default function HomePage() {
         <div className="container mx-auto px-4 py-6 flex items-center justify-between relative z-10">
           <div className="flex items-center space-x-3">
             <div className="relative">
-              <Brain className="h-8 w-8 text-primary wiggle" />
+              <Coffee className="h-8 w-8 text-primary wiggle" />
               <div className="absolute -top-1 -right-1 w-3 h-3 bg-accent rounded-full animate-pulse"></div>
             </div>
-            <span className="text-2xl font-bold text-foreground handwritten-title">Lazies</span>
-            <div className="hidden sm:block text-xs bg-accent text-accent-foreground px-2 py-1 rounded-full rotate-12 handwritten">
+            <span className="text-2xl font-bold text-foreground brand-handwritten">Lazies</span>
+            <div className="hidden sm:block text-xs bg-primary/10 text-primary px-2 py-1 rounded-full rotate-12">
               lazies.xyz
             </div>
           </div>
-          <Button className="hand-drawn bg-accent hover:bg-accent/90 text-accent-foreground font-bold hover:scale-105 transition-transform handwritten-bold">
+          <Button className="hand-drawn bg-accent hover:bg-accent/90 text-accent-foreground font-bold hover:scale-105 transition-transform">
             Join the Vibe ✨
           </Button>
         </div>
@@ -33,12 +33,12 @@ export default function HomePage() {
 
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="inline-block mb-4">
-            <span className="bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-medium border-2 border-accent/20 hand-drawn handwritten">
+            <span className="bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-medium border-2 border-accent/20 hand-drawn">
               YouTube is mid 💀
             </span>
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-6 leading-tight handwritten-title">
+          <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-6 leading-tight">
             Stop the
             <br />
             <span className="text-primary relative">
@@ -49,7 +49,7 @@ export default function HomePage() {
             <span className="text-accent">Start Learning</span>
           </h1>
 
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed handwritten">
+          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
             Tired of falling into YouTube rabbit holes? 🐰 We curate the actually good educational content so you can
             <span className="text-primary font-semibold"> level up your brain</span> instead of rotting it.
           </p>
@@ -57,17 +57,17 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
             <Button
               size="lg"
-              className="hand-drawn bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-4 font-bold hover:scale-105 transition-transform handwritten-bold"
+              className="hand-drawn bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-4 font-bold hover:scale-105 transition-transform"
             >
               Get Early Access <Sparkles className="ml-2 h-5 w-5" />
             </Button>
             <div className="flex items-center gap-2 text-muted-foreground">
               <Heart className="h-4 w-4 text-accent animate-pulse" />
-              <span className="text-sm handwritten">Launching Soon (no cap)</span>
+              <span className="text-sm">Launching Soon (no cap)</span>
             </div>
           </div>
 
-          <div className="flex justify-center items-center gap-6 text-sm text-muted-foreground handwritten">
+          <div className="flex justify-center items-center gap-6 text-sm text-muted-foreground">
             <div className="flex items-center gap-1">
               <Star className="h-4 w-4 text-accent" />
               <span>No clickbait</span>
@@ -88,8 +88,8 @@ export default function HomePage() {
         <div className="absolute top-0 left-0 w-40 h-40 bg-accent/5 organic-shape"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-4xl font-bold text-foreground mb-4 handwritten-title">We've All Been There... 😭</h2>
-            <p className="text-lg text-muted-foreground handwritten">
+            <h2 className="text-4xl font-bold text-foreground mb-4">We've All Been There... 😭</h2>
+            <p className="text-lg text-muted-foreground">
               You open YouTube to learn something useful and 3 hours later you're watching "Why Penguins Can't Fly" 🐧
             </p>
           </div>
@@ -99,8 +99,8 @@ export default function HomePage() {
             <Card className="hand-drawn border-4 border-destructive/30 bg-destructive/5 transform -rotate-1 hover:rotate-0 transition-transform">
               <CardContent className="p-8 text-center">
                 <div className="text-6xl mb-4">😵‍💫</div>
-                <h3 className="text-2xl font-bold text-destructive mb-4 handwritten-title">The YouTube Trap</h3>
-                <ul className="text-left space-y-3 text-card-foreground handwritten">
+                <h3 className="text-2xl font-bold text-destructive mb-4">The YouTube Trap</h3>
+                <ul className="text-left space-y-3 text-card-foreground">
                   <li className="flex items-start gap-2">
                     <span className="text-destructive">💀</span>
                     <span>Start: "Learn Python" → End: "Cat videos compilation #47"</span>
@@ -125,8 +125,8 @@ export default function HomePage() {
             <Card className="hand-drawn border-4 border-primary/30 bg-primary/5 transform rotate-1 hover:rotate-0 transition-transform">
               <CardContent className="p-8 text-center">
                 <div className="text-6xl mb-4">🧠✨</div>
-                <h3 className="text-2xl font-bold text-primary mb-4 handwritten-title">The Lazies Way</h3>
-                <ul className="text-left space-y-3 text-card-foreground handwritten">
+                <h3 className="text-2xl font-bold text-primary mb-4">The Lazies Way</h3>
+                <ul className="text-left space-y-3 text-card-foreground">
                   <li className="flex items-start gap-2">
                     <span className="text-primary">🎯</span>
                     <span>Curated content that actually matters</span>
@@ -154,8 +154,8 @@ export default function HomePage() {
         <div className="absolute top-10 right-10 w-20 h-20 bg-accent/10 organic-shape float"></div>
 
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-foreground mb-4 handwritten-title">How We Keep You Focused 🎯</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto handwritten">
+          <h2 className="text-4xl font-bold text-foreground mb-4">How We Keep You Focused 🎯</h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Three simple steps to escape the scroll trap and actually learn something
           </p>
         </div>
@@ -170,8 +170,8 @@ export default function HomePage() {
               <div className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-bold mb-4 inline-block">
                 STEP 1
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-card-foreground handwritten-title">Pick Your Vibe</h3>
-              <p className="text-muted-foreground handwritten">
+              <h3 className="text-2xl font-bold mb-4 text-card-foreground">Pick Your Vibe</h3>
+              <p className="text-muted-foreground">
                 Tell us what you want to learn - coding, design, business, or whatever gets you hyped 🔥
               </p>
             </CardContent>
@@ -186,10 +186,8 @@ export default function HomePage() {
               <div className="bg-accent text-accent-foreground px-3 py-1 rounded-full text-sm font-bold mb-4 inline-block">
                 STEP 2
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-card-foreground handwritten-title">
-                We Curate the Good Stuff
-              </h3>
-              <p className="text-muted-foreground handwritten">
+              <h3 className="text-2xl font-bold mb-4 text-card-foreground">We Curate the Good Stuff</h3>
+              <p className="text-muted-foreground">
                 Our AI finds the best educational content and filters out all the random nonsense ✨
               </p>
             </CardContent>
@@ -204,8 +202,8 @@ export default function HomePage() {
               <div className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-bold mb-4 inline-block">
                 STEP 3
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-card-foreground handwritten-title">Level Up Daily</h3>
-              <p className="text-muted-foreground handwritten">
+              <h3 className="text-2xl font-bold mb-4 text-card-foreground">Level Up Daily</h3>
+              <p className="text-muted-foreground">
                 Follow your personalized learning path and watch yourself actually get better at stuff 📈
               </p>
             </CardContent>
@@ -220,10 +218,8 @@ export default function HomePage() {
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="max-w-3xl mx-auto">
             <div className="text-6xl mb-6">🚀</div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 handwritten-title">
-              Ready to Escape the Scroll Trap?
-            </h2>
-            <p className="text-white/90 mb-8 text-xl leading-relaxed handwritten">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Ready to Escape the Scroll Trap?</h2>
+            <p className="text-white/90 mb-8 text-xl leading-relaxed">
               Join <span className="font-bold">2,847 people</span> who are done with brain rot and ready to actually
               learn something cool.
               <br />
@@ -235,13 +231,13 @@ export default function HomePage() {
                 <Input
                   type="email"
                   placeholder="your.email@example.com"
-                  className="bg-white border-0 text-foreground text-lg py-3 rounded-xl handwritten"
+                  className="bg-white border-0 text-foreground text-lg py-3 rounded-xl"
                 />
-                <Button className="bg-white text-primary hover:bg-white/90 font-bold text-lg py-3 rounded-xl hover:scale-105 transition-transform handwritten-bold">
+                <Button className="bg-white text-primary hover:bg-white/90 font-bold text-lg py-3 rounded-xl hover:scale-105 transition-transform">
                   Get Early Access ✨
                 </Button>
               </div>
-              <p className="text-white/70 text-xs mt-4 handwritten">
+              <p className="text-white/70 text-xs mt-4">
                 We'll send you a magic link when we launch (probably next month)
               </p>
             </div>
@@ -254,16 +250,16 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center text-center">
             <div className="flex items-center space-x-3 mb-6">
-              <Brain className="h-8 w-8 text-primary wiggle" />
-              <span className="text-2xl font-bold text-foreground handwritten-title">Lazies</span>
-              <div className="text-xs bg-accent text-accent-foreground px-2 py-1 rounded-full rotate-12 handwritten">
+              <Coffee className="h-8 w-8 text-primary wiggle" />
+              <span className="text-2xl font-bold text-foreground brand-handwritten">Lazies</span>
+              <div className="text-xs bg-accent text-accent-foreground px-2 py-1 rounded-full rotate-12">
                 lazies.xyz
               </div>
             </div>
-            <p className="text-muted-foreground mb-6 max-w-md text-lg handwritten">
+            <p className="text-muted-foreground mb-6 max-w-md text-lg">
               Making learning cool again, one curated video at a time 📚✨
             </p>
-            <div className="flex gap-4 text-sm text-muted-foreground handwritten">
+            <div className="flex gap-4 text-sm text-muted-foreground">
               <span>Made with 💜 for learners</span>
               <span>•</span>
               <span>No cap, just facts</span>
