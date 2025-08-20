@@ -1,19 +1,35 @@
 "use client"
 
 import type React from "react"
-
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { BookOpen, Target, Zap, Star, Heart, Sparkles } from "lucide-react"
 import { createClient } from "@/lib/supabase/client"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 export default function HomePage() {
   const [email, setEmail] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [message, setMessage] = useState("")
   const [isSuccess, setIsSuccess] = useState(false)
+  const [peopleCount, setPeopleCount] = useState(284)
+
+  const fetchWaitlistCount = async () => {
+    const supabase = createClient()
+    try {
+      const { count } = await supabase.from("waitlist").select("*", { count: "exact", head: true })
+
+      setPeopleCount(284 + (count || 0))
+    } catch (error) {
+      console.error("Error fetching waitlist count:", error)
+      setPeopleCount(284)
+    }
+  }
+
+  useEffect(() => {
+    fetchWaitlistCount()
+  }, [])
 
   const handleWaitlistSignup = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -29,7 +45,6 @@ export default function HomePage() {
 
       if (error) {
         if (error.code === "23505") {
-          // Unique constraint violation
           setMessage("You're already on the list! 🎉")
           setIsSuccess(true)
         } else {
@@ -39,6 +54,7 @@ export default function HomePage() {
         setMessage("Welcome to the vibe! We'll hit you up when we launch 🚀")
         setIsSuccess(true)
         setEmail("")
+        fetchWaitlistCount()
       }
     } catch (error) {
       console.error("Waitlist signup error:", error)
@@ -257,8 +273,8 @@ export default function HomePage() {
             <div className="text-6xl mb-6">🚀</div>
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Ready to Escape the Scroll Trap?</h2>
             <p className="text-white/90 mb-8 text-xl leading-relaxed">
-              Join <span className="font-bold">284 people</span> who are done with brain rot and ready to actually
-              learn something cool.
+              Join <span className="font-bold">{peopleCount} people</span> who are done with brain rot and ready to
+              actually learn something cool.
               <br />
               <span className="text-sm opacity-80">(No spam, we promise - we're not that type of company 💯)</span>
             </p>
