@@ -257,7 +257,7 @@ export default function HomePage() {
             <div className="text-6xl mb-6">🚀</div>
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Ready to Escape the Scroll Trap?</h2>
             <p className="text-white/90 mb-8 text-xl leading-relaxed">
-              Join <span className="font-bold">2,847 people</span> who are done with brain rot and ready to actually
+              Join <span className="font-bold">284 people</span> who are done with brain rot and ready to actually
               learn something cool.
               <br />
               <span className="text-sm opacity-80">(No spam, we promise - we're not that type of company 💯)</span>
