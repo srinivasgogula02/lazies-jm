@@ -15,7 +15,7 @@ export default function HomePage() {
               <Brain className="h-8 w-8 text-primary wiggle" />
               <div className="absolute -top-1 -right-1 w-3 h-3 bg-accent rounded-full animate-pulse"></div>
             </div>
-            <span className="text-2xl font-bold text-foreground handwritten-title">Lazies</span>
+            <span className="text-2xl font-bold text-foreground handwritten-title">chalkframe</span>
             <div className="hidden sm:block text-xs bg-accent text-accent-foreground px-2 py-1 rounded-full rotate-12 handwritten">
               lazies.xyz
             </div>
