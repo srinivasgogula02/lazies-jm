@@ -72,7 +72,7 @@ export default function HomePage() {
         <div className="absolute top-0 right-0 w-24 h-24 bg-primary/10 organic-shape -z-10"></div>
         <div className="container mx-auto px-4 py-6 flex items-center justify-between relative z-10">
           <div className="flex items-center space-x-3">
-            <span className="text-2xl font-bold text-foreground brand-handwritten">Lazies</span>
+            <span className="text-2xl font-bold text-foreground brand-handwritten">chalkframe</span>
           </div>
           <Button
             onClick={() => document.getElementById("waitlist-form")?.scrollIntoView({ behavior: "smooth" })}
@@ -181,7 +181,7 @@ export default function HomePage() {
             <Card className="hand-drawn border-4 border-primary/30 bg-primary/5 transform rotate-1 hover:rotate-0 transition-transform">
               <CardContent className="p-8 text-center">
                 <div className="text-6xl mb-4">🧠✨</div>
-                <h3 className="text-2xl font-bold text-primary mb-4">The Lazies Way</h3>
+                <h3 className="text-2xl font-bold text-primary mb-4">The chalkframe Way</h3>
                 <ul className="text-left space-y-3 text-card-foreground">
                   <li className="flex items-start gap-2">
                     <span className="text-primary">🎯</span>
@@ -315,7 +315,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center text-center">
             <div className="flex items-center space-x-3 mb-6">
-              <span className="text-2xl font-bold text-foreground brand-handwritten">Lazies</span>
+              <span className="text-2xl font-bold text-foreground brand-handwritten">chalkframe</span>
             </div>
             <p className="text-muted-foreground mb-6 max-w-md text-lg">
               Making learning cool again, one curated video at a time 📚✨
@@ -325,7 +325,7 @@ export default function HomePage() {
               <span>•</span>
               <span>No cap, just facts</span>
               <span>•</span>
-              <span>© 2025 Lazies</span>
+              <span>© 2025 chalframe</span>
             </div>
           </div>
         </div>
